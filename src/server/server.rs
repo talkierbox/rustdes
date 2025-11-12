@@ -132,14 +132,10 @@ pub fn handle_client(
 }
 
 fn handle_input(input: String) -> std::io::Result<String> {
-    // Split up the input string, match the first word block
     let parts: Vec<&str> = input.split(" ").collect();
 
     let cmd_type = match_command(parts[0])?;
-
-    // Convert &[&str] to Vec<&str> (or keep as slice)
     let args: &[&str] = &parts[1..];
-
     let output = execute(&cmd_type, args)?;
 
     Ok(output)
